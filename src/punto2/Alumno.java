@@ -67,11 +67,12 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 
 	@Override
 	public int compareTo(Alumno alumno) {
-		if(this.getApellido().compareTo(alumno.getApellido()) > 0){
-			return 1;
-		}
-		else if(this.getApellido().compareTo(alumno.getApellido()) < 0){
-			return -1;
+		ComparadorAlumnoApellido comparadorApellido = new ComparadorAlumnoApellido();
+		ComparadorAlumnoNombre comparadorNombre = new ComparadorAlumnoNombre();
+		ComparadorDNI comparadorDNI = new ComparadorDNI();
+		
+		if(this == alumno){
+			
 		}
 		else if(this.getApellido().compareTo(alumno.getApellido()) == 0){
 			if(this.getNombre().compareTo(alumno.getNombre()) > 0){
