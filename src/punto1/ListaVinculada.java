@@ -21,6 +21,8 @@ public class ListaVinculada<T> implements Iterable<T>{
 		this.size=0;
 //		this.orden=orden;
 	}
+	
+	//TENEMOS QUE HACER UN METODO INSERTAR NO ORDENADO! Que solo agregue un elemento al final o al principio de la lista
 
 	//TODO: Tener en cuenta que inserta ordenado, está asumiendo siempre que el orden es ascendente (de menor a mayor).
 	public void InsertarOrdenado(T obj) {

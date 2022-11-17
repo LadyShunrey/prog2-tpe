@@ -3,21 +3,21 @@ package punto2;
 import punto1.*;
 import punto3.*;
 
-//import javaava.util.ArrayList;
+import java.util.ArrayList;
 
 public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 	private String nombre;
 	private String apellido;
 	private int dni;
 	private int edad;
-	private ListaVinculada<String> intereses;
+	private ArrayList<String> intereses;
 	
 	public Alumno(String nombre, String apellido, int dni, int edad){
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.edad = edad;
-		intereses = new ListaVinculada<String>();
+		intereses = new ArrayList<String>();
 	}
 	
 	//implementar equals
@@ -41,6 +41,10 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 
 	public int getEdad() {
 		return edad;
+	}
+	
+	public void addInteres(String interes){
+		intereses.add(interes);
 	}
 
 	@Override
