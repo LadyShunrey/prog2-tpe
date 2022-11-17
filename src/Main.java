@@ -1,5 +1,9 @@
 import java.util.Iterator;
 
+import punto1.*;
+import punto2.*;
+import punto3.*;
+
 public class Main {
 	
     public static void main(String[] args) {

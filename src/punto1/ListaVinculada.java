@@ -1,3 +1,6 @@
+package punto1;
+
+
 import java.util.Comparator;
 import java.util.Iterator;
 
@@ -11,6 +14,12 @@ public class ListaVinculada<T> implements Iterable<T>{
 		this.cabeza=null;
 		this.size=0;
 		this.orden=orden;
+	}
+	
+	public ListaVinculada() {
+		this.cabeza=null;
+		this.size=0;
+//		this.orden=orden;
 	}
 
 	//TODO: Tener en cuenta que inserta ordenado, está asumiendo siempre que el orden es ascendente (de menor a mayor).
