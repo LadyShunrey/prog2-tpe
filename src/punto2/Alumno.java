@@ -70,26 +70,14 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 		ComparadorAlumnoApellido comparadorApellido = new ComparadorAlumnoApellido();
 		ComparadorAlumnoNombre comparadorNombre = new ComparadorAlumnoNombre();
 		ComparadorDNI comparadorDNI = new ComparadorDNI();
-		
-		if(this == alumno){
-			
+		int resultado;
+		resultado = comparadorApellido.compare(this, alumno);
+		if(resultado==0){
+			resultado = comparadorNombre.compare(this, alumno);
 		}
-		else if(this.getApellido().compareTo(alumno.getApellido()) == 0){
-			if(this.getNombre().compareTo(alumno.getNombre()) > 0){
-				return 1;
-			}
-			else if(this.getNombre().compareTo(alumno.getNombre()) < 0){
-				return -1;
-			}
-			else if(this.getNombre().compareTo(alumno.getNombre()) == 0){
-				if(this.getDni() > alumno.getDni()){
-					return 1;
-				}
-				else if(this.getDni() < alumno.getDni()){
-					return -1;
-				}
-			}
+		if(resultado==0){
+			resultado = comparadorDNI.compare(this, alumno);
 		}
-		return 0;
+		return resultado;
 	}
 }

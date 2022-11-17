@@ -3,7 +3,7 @@ package punto1;
 import java.util.Iterator;
 
 public class Iterador<T> implements Iterator<T>{
-	Nodo<T> puntero;
+	private Nodo<T> puntero;
 	
 	public Iterador(Nodo<T> puntero){
 		this.puntero = puntero;

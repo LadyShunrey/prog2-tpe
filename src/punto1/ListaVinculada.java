@@ -137,31 +137,30 @@ public class ListaVinculada<T> implements Iterable<T>{
 		return new IteradorNodo<T>(this.cabeza);
 	}
 	
-//	public void mostrarLista() {
-//		Iterator<T> it = this.iterator();
-//		while(it.hasNext()) {
-//			T index= it.next();
-//		}
-//		
-//	}
+	public void mostrarLista() {
+		IteradorNodo<T> iterador = new IteradorNodo<T>(cabeza);
+		while(iterador.hasNext()) {
+			System.out.println(iterador.next());
+		}	
+	}
 	
 
 	//FIXME: Usar POS, sized de la lista y devolver pos-1 cuando pide next
 	private class IteradorNodo<T> implements Iterator<T>{
-		private Nodo<T> nodo;
+		private Nodo<T> puntero;
 		
-		public IteradorNodo(Nodo<T> n) {
-			this.nodo=n;
+		public IteradorNodo(Nodo<T> puntero) {
+			this.puntero=puntero;
 		}
 		@Override
 		public boolean hasNext() {
-			return nodo.obtenerSiguiente()!=null;
+			return puntero.obtenerSiguiente()!=null;
 		}
 		
 		@Override
 		public T next() {
-			T valor= nodo.obtenerValor();
-			nodo = nodo.obtenerSiguiente();
+			T valor= puntero.obtenerValor();
+			puntero = puntero.obtenerSiguiente();
 			return valor; 
 		}
 	}
