@@ -50,6 +50,7 @@ public class MainPunto4 {
 		listaDeNumeros.mostrarLista();
 		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
 		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
+		listaDeNumeros.eliminarSegunPosicion(posicionDel11);
 		//buscar el 11 y eliminarlo
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
