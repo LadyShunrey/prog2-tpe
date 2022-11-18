@@ -46,12 +46,14 @@ public class MainPunto4 {
 		//buscar el 5 y borrarlo
 		int posicionDel5 = listaDeNumeros.obtenerPosicion(5);
 		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
-		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
+//		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
+		listaDeNumeros.eliminarSegunValor(5);
 		listaDeNumeros.mostrarLista();
 		//buscar el 11 y eliminarlo
 		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
 		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
-		listaDeNumeros.eliminarSegunPosicion(posicionDel11);
+//		listaDeNumeros.eliminarSegunPosicion(posicionDel11);
+		listaDeNumeros.eliminarSegunValor(11);
 
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
@@ -217,7 +219,7 @@ public class MainPunto4 {
 		ComparadorInverso<ElementoUniversidad> comparadorInvertidoUniversidad = new ComparadorInverso<>(comparadorUniversidad);
 		ListaVinculada<ElementoUniversidad> listaUniversidad = new ListaVinculada<ElementoUniversidad>(comparadorInvertidoUniversidad);
 		
-		listaUniversidad.insertarOrdenado(olimpiadas);
+		
 		listaUniversidad.insertarOrdenado(unicen);
 		listaUniversidad.insertarOrdenado(olimpiadas);
 
