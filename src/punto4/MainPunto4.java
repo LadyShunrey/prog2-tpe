@@ -48,10 +48,11 @@ public class MainPunto4 {
 		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
 		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
 		listaDeNumeros.mostrarLista();
+		//buscar el 11 y eliminarlo
 		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
 		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
 		listaDeNumeros.eliminarSegunPosicion(posicionDel11);
-		//buscar el 11 y eliminarlo
+
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
 		}
@@ -68,10 +69,10 @@ public class MainPunto4 {
 		String parcial = "Parcial";
 		String prog2 = "Prog2";
 		
-		listaDePalabras.insertarOrdenado(facil);
-		listaDePalabras.insertarOrdenado(es);
-		listaDePalabras.insertarOrdenado(parcial);
-		listaDePalabras.insertarOrdenado(prog2);
+		listaDePalabras.insertar(facil);
+		listaDePalabras.insertar(es);
+		listaDePalabras.insertar(parcial);
+		listaDePalabras.insertar(prog2);
 		
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
@@ -86,13 +87,17 @@ public class MainPunto4 {
 		
 		//PUNTO F
 		System.out.println("--------- EL PUNTO F ---------");
-		int encontrarPosicion = listaDePalabras.obtenerPosicion(parcial); 
-		System.out.println("La posición en la que está el String 'Parcial' es: " + encontrarPosicion);
+		int encontrarPosicionDeParcial = listaDePalabras.obtenerPosicion(parcial); 
+		System.out.println("La posición en la que está el String 'Parcial' es: " + encontrarPosicionDeParcial);
 		
 		//PUNTO G
 		System.out.println("--------- EL PUNTO G ---------");
-//		int encontrarPosicion2 = listaDePalabras.obtenerPosicion("Recuperatorio"); //creo que deberia NO existir, no? 
-//		System.out.println("La posición en la que está el String 'Recuperatorio' es: " + encontrarPosicion2);
+		int encontrarPosicionDeRecuperatorio = listaDePalabras.obtenerPosicion("Recuperatorio"); //creo que deberia NO existir, no?
+		String resultado = "La posición en la que está el String 'Recuperatorio' es: ";
+		if(encontrarPosicionDeRecuperatorio < 0){
+			resultado = "No existe esa palabra, la posicion es: ";
+		}
+		System.out.println(resultado + encontrarPosicionDeRecuperatorio);
 		
 		//PUNTO H
 		System.out.println("--------- EL PUNTO H ---------");
@@ -106,7 +111,7 @@ public class MainPunto4 {
 		System.out.println("Con el orden invertido: ");
 		
 //		listaDePalabras.(comparadorInvertido);
-		//me falta el metodo para ordenar
+		listaDePalabras.setOrden(comparadorInvertido);
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
 		}
