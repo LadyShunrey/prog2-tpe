@@ -46,6 +46,10 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 	public void addInteres(String interes){
 		intereses.add(interes);
 	}
+	
+	public void imprimirEstructura(){
+		System.out.println("Este alumno se llama: " + nombre);
+	}
 
 	@Override
 	public boolean equals(Object obj) {

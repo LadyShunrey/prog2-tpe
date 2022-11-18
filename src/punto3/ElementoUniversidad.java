@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public abstract class ElementoUniversidad implements Iterable<ElementoUniversidad>{
 	public abstract int contarAlumnos();
+	public abstract void imprimirEstructura();
 	
 	public Iterator<ElementoUniversidad> iterator() {
 		

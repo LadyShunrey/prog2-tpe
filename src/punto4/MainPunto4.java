@@ -8,6 +8,8 @@ public class MainPunto4 {
 
 	public static void main(String[] args) {
 		//PUNTO A
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO A ---------");
 		ComparadorInteger<Integer> comparadorDeInts = new ComparadorInteger<>();
 		
@@ -28,6 +30,8 @@ public class MainPunto4 {
 		listaDeNumeros.mostrarLista();
 		
 		//PUNTO B
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO B ---------");
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
@@ -129,6 +133,81 @@ public class MainPunto4 {
 		
 		Alumno roman = new Alumno("Román", "Bazán", 32555111 , 24);
 		roman.addInteres("argentina");
+		
+		Alumno juan = new Alumno("Juan", "Juarez", 33222444 , 25);
+		juan.addInteres("sucesiones");
+		juan.addInteres("álgebra");
+		
+		Alumno julio = new Alumno("Julio", "Cesar", 33222111 , 26);
+		julio.addInteres("sucesiones");
+		julio.addInteres("algebra");
+		
+		Alumno bernardino = new Alumno("Bernardino", "Rivas", 30987654 , 27);
+		bernardino.addInteres("matemáticas");
+		
+		Alumno jose = new Alumno("José", "Paso", 33322112 , 28);
+		jose.addInteres("problemas");
+		
+		Alumno isaac = new Alumno("Isaac", "Newton", 12343565 , 28);
+		isaac.addInteres("sucesiones");
+		
+		Grupo unicen = new Grupo("Unicen");
+		
+		Grupo exactas = new Grupo("Exactas");
+		
+		Grupo humanas = new Grupo("Humanas");
+		
+		Grupo historia = new Grupo("Historia");
+		
+		Grupo olimpiadas = new Grupo("Olimpíadas Matemáticas");
+		
+		Grupo matea2 = new Grupo("Matea2");
+		
+		Grupo losFibo = new Grupo("Los Fibo");
+		
+		//Unicen
+		unicen.addElemento(exactas);
+		unicen.addElemento(humanas);
+		unicen.addElemento(john);
+		
+		exactas.addElemento(fede);
+		exactas.addElemento(juana);
+		
+		humanas.addElemento(historia);
+		humanas.addElemento(mora);
+		
+		historia.addElemento(flora);
+		historia.addElemento(martin);
+		historia.addElemento(roman);
+		
+		//Olimpiadas Matematicsa
+		olimpiadas.addElemento(matea2);
+		olimpiadas.addElemento(losFibo);
+		
+		matea2.addElemento(juan);
+		matea2.addElemento(julio);
+		
+		losFibo.addElemento(bernardino);
+		losFibo.addElemento(jose);
+		losFibo.addElemento(isaac);
+		
+		unicen.imprimirEstructura();
+		
+		olimpiadas.imprimirEstructura();
+		
+		System.out.println("La universidad " + unicen.getNombre() + " tiene esta cantidad de alumnos:" + unicen.contarAlumnos());
+		System.out.println("El grupo " + olimpiadas.getNombre() + " tiene esta cantidad de alumnos:" + olimpiadas.contarAlumnos());
+		
+		ComparadorElementoUniversidad comparadorUniversidad = new ComparadorElementoUniversidad();
+		ComparadorInverso<ElementoUniversidad> comparadorInvertidoUniversidad = new ComparadorInverso<>(comparadorUniversidad);
+		ListaVinculada<ElementoUniversidad> listaUniversidad = new ListaVinculada<ElementoUniversidad>(comparadorInvertidoUniversidad);
+		
+		listaUniversidad.InsertarOrdenado(olimpiadas);
+		listaUniversidad.InsertarOrdenado(unicen);
+		listaUniversidad.InsertarOrdenado(olimpiadas);
+
+		listaUniversidad.mostrarLista();
+		
 	}
 
 }

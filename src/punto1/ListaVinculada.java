@@ -1,13 +1,12 @@
 package punto1;
 
-
 import java.util.Comparator;
 import java.util.Iterator;
 
 public class ListaVinculada<T> implements Iterable<T>{
 	
-	Nodo<T> cabeza;
-	Comparator<T> orden;
+	private Nodo<T> cabeza;
+	private Comparator<T> orden;
 	private int size;
 	
 	public ListaVinculada(Comparator<T> orden) {
@@ -19,22 +18,21 @@ public class ListaVinculada<T> implements Iterable<T>{
 	public ListaVinculada() {
 		this.cabeza=null;
 		this.size=0;
-//		this.orden=orden;
 	}
 	
 	//TENEMOS QUE HACER UN METODO INSERTAR NO ORDENADO! Que solo agregue un elemento al final o al principio de la lista
 
-	//TODO: Tener en cuenta que inserta ordenado, está asumiendo siempre que el orden es ascendente (de menor a mayor).
-	public void InsertarOrdenado(T obj) {
-		Nodo<T> nuevo= new Nodo<T>(obj);
+	//insertarOrdenado siempre inserta en orden ascendente (de menor a mayor).
+	public void InsertarOrdenado(T valor) {
+		Nodo<T> nuevo= new Nodo<T>(valor);
 		if(estaVacia()) {
 			cabeza = nuevo;
 		}else {
 			Nodo<T> anterior=null;
 			Nodo<T> temp=this.cabeza;
-			while(temp!=null && orden.compare(temp.obtenerValor(), obj)<0) { //nuevo es mayor que temp avanzo
-				anterior = temp;
-				temp=temp.obtenerSiguiente();		
+			while(temp!=null && orden.compare(temp.obtenerValor(), valor)<0) { //nuevo es mayor que temp avanzo
+				anterior = temp;		//al anterior le doy el papel de cabeza
+				temp=temp.obtenerSiguiente();		//avanzo
 			}
 			
 			if(temp==null&&anterior!=null) {
@@ -51,13 +49,29 @@ public class ListaVinculada<T> implements Iterable<T>{
 		size++; 
 	}
 	
+	public void Insertar(T valor) {
+		Nodo<T> nuevo = new Nodo<T>(valor); 
+		if(estaVacia()) {
+			this.cabeza=nuevo;
+		}
+		else {
+			Nodo<T> temp= this.cabeza;
+			while(temp!=null) {
+				temp=temp.obtenerSiguiente();
+				nuevo.enlazarSiguiente(temp);
+			}
+		}
+		size++;
+	}
+	
 	//FIXME: Este método no debería ser necesario, SALVO que se cambie el orden, en cuyo caso hay que reordenar (pero no insertando)
 	private void ordenar() {
 		Nodo<T>aux= this.cabeza;
 		this.cabeza=null;
-		while(this.cabeza!=null) {
+		while(aux!=null) {
 			this.InsertarOrdenado(aux.obtenerValor());
 			aux=aux.obtenerSiguiente();
+			size--;
 		}
 		
 	}
@@ -72,54 +86,99 @@ public class ListaVinculada<T> implements Iterable<T>{
 //		return temp.obtenerValor();
 //	}
 	
-
-	//FIXME: que pasa si index > size? en ese caso no borra nada (deberia verificarse al principio y retornar). Size se mantiene como está
 	public void eliminarSegunPosicion(Integer index) {
 		int contador = 0;
-		if(index==0) {
-			cabeza=cabeza.obtenerSiguiente();
-		}else {
-			Nodo<T> temporal = cabeza;
-			while(contador<index-1) {
-				temporal = temporal.obtenerSiguiente();
-				contador ++;
-			}	
-			temporal.enlazarSiguiente(
-					temporal.obtenerSiguiente().obtenerSiguiente());	
+		if(index<size){
+			if(index==0) {
+				cabeza=cabeza.obtenerSiguiente();
+			}else {
+				Nodo<T> temporal = cabeza;
+				while(contador<index-1) {
+					temporal = temporal.obtenerSiguiente();
+					contador ++;
+				}	
+				temporal.enlazarSiguiente(
+						temporal.obtenerSiguiente().obtenerSiguiente());	
+			}
+			size--;
 		}
-		size--;
 	}
 	
+	public void eliminarSegunValor(T numeroAeliminar) {
+        if (cabeza!= null) {
+            Nodo<T> aux = cabeza;
+            Nodo<T> anterior = null;
+            while ((aux != null) && (!aux.obtenerValor().equals(numeroAeliminar))) {
+                anterior = aux;
+                aux = aux.obtenerSiguiente();
+            }
+            if (aux==cabeza){
+                cabeza=aux.obtenerSiguiente();
+            }else if ((aux != null) && (aux.obtenerValor().equals(numeroAeliminar))) {
+                anterior.enlazarSiguiente(aux.obtenerSiguiente());
+                this.size--;
+            }
+        }
+
+    }
+
+	public Object obtenerValor(Integer index) {
+		int contador =0;
+		Nodo<T> temp= cabeza;
+		while(contador<index ) {
+			
+			temp= temp.obtenerSiguiente();
+			contador ++;
+		}
+		return temp.obtenerValor();
+	}
 	
 	public Integer obtenerPosicion(T valor) {
-		Nodo<T> aux=cabeza;
-		int contador=0;
-		while(aux!=null && aux.obtenerValor()!=valor) { //FIXME: no sería mejor usar equals?
-			aux=aux.obtenerSiguiente();
-			contador++;
-		}
-		if(aux==null) {
-			//TODO: prestar atención a este null, porque hay que chequearlo después. otra opción es que sea int y devolver -1
-			return null; 
+		if(estaVacia()) {
+			return -1;
 		}else {
-			return contador;
+			Nodo<T> aux=cabeza;
+			int contador=0;
+			while(aux!=null && aux.obtenerValor()!=valor) { //FIXME: no sería mejor usar equals?
+				aux=aux.obtenerSiguiente();
+				contador++;
+			}
+			if(aux==null) {
+				return -1; 
+			}else {
+				return contador;
+			}
 		}
 	}
-	
-	
+		
 	public void eliminarOcurrencias(T valor) {
-		Nodo<T> aux= this.cabeza;
-		while(aux.obtenerValor().equals(valor)&& aux!=null) {
-			this.cabeza=cabeza.obtenerSiguiente();	
-			size--;
-			aux=aux.obtenerSiguiente();
+		if(estaVacia()) {
+			return ;
+		}else {	
+			Nodo<T> aux= this.cabeza;
+			Nodo<T> ant=null;
+			while(aux.obtenerValor().equals(valor)&& aux!=null) {//recorro la lista 
+				this.cabeza=cabeza.obtenerSiguiente();	
+				size--;
+				aux=aux.obtenerSiguiente();
 			}
-		if(aux!=null) {
-			aux=aux.obtenerSiguiente();
-		}else {
-			cabeza=null;
+			if(aux!=null) { 
+				ant=aux;	
+				aux=aux.obtenerSiguiente();
+			}else {
+				cabeza=null; 
+			}
+			while(aux!=null) {
+				if(aux.obtenerValor().equals(valor)) {
+					ant.enlazarSiguiente(aux.obtenerSiguiente()); //apunto al nodo siguiente al siguiente(elimino)
+					aux=aux.obtenerSiguiente(); //avanzo
+					this.size--;
+				}else {
+					ant=aux; 
+					aux=aux.obtenerSiguiente();
+				}
+			}
 		}
-	
 	}
 	
 	public boolean estaVacia() {
@@ -134,33 +193,36 @@ public class ListaVinculada<T> implements Iterable<T>{
 		this.orden = orden;
 		ordenar();
 	}
-
-	public Iterator<T> iterator(){
-		return new IteradorNodo<T>(this.cabeza);
-	}
 	
 	public void mostrarLista() {
-		IteradorNodo<T> iterador = new IteradorNodo<T>(cabeza);
+		IteradorNodo<T> iterador = new IteradorNodo<T>(cabeza, size);
 		while(iterador.hasNext()) {
 			System.out.println(iterador.next());
 		}	
+	}
+	
+	public Iterator<T> iterator(){
+		return new IteradorNodo<T>(this.cabeza, this.size);
 	}
 	
 
 	//FIXME: Usar POS, sized de la lista y devolver pos-1 cuando pide next
 	private class IteradorNodo<T> implements Iterator<T>{
 		private Nodo<T> puntero;
+		private int pos;
 		
-		public IteradorNodo(Nodo<T> puntero) {
+		public IteradorNodo(Nodo<T> puntero, int pos) {
 			this.puntero=puntero;
+			this.pos = pos;
 		}
 		@Override
 		public boolean hasNext() {
-			return puntero.obtenerSiguiente()!=null;
+			return pos>0;
 		}
 		
 		@Override
 		public T next() {
+			pos--;
 			T valor= puntero.obtenerValor();
 			puntero = puntero.obtenerSiguiente();
 			return valor; 
