@@ -20,12 +20,12 @@ public class MainPunto4 {
 		Integer numero3 = 1;
 		Integer numero4 = 5;
 		Integer numero5 = 11;
-		
-		listaDeNumeros.InsertarOrdenado(numero1);
-		listaDeNumeros.InsertarOrdenado(numero2);
-		listaDeNumeros.InsertarOrdenado(numero3);
-		listaDeNumeros.InsertarOrdenado(numero4);
-		listaDeNumeros.InsertarOrdenado(numero5);
+	
+		listaDeNumeros.insertar(numero1);
+		listaDeNumeros.insertar(numero2);
+		listaDeNumeros.insertar(numero3);
+		listaDeNumeros.insertar(numero4);
+		listaDeNumeros.insertar(numero5);
 		
 		listaDeNumeros.mostrarLista();
 		
@@ -40,7 +40,16 @@ public class MainPunto4 {
 		//PUNTO C
 		System.out.println("--------- EL PUNTO C ---------");
 		//eliminar por pos el primero
+		System.out.println("Borramos la primer posicion que es el 10 y queda:");
+		listaDeNumeros.eliminarSegunPosicion(0);
+		listaDeNumeros.mostrarLista();
 		//buscar el 5 y borrarlo
+		int posicionDel5 = listaDeNumeros.obtenerPosicion(5);
+		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
+		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
+		listaDeNumeros.mostrarLista();
+		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
+		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
 		//buscar el 11 y eliminarlo
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
@@ -58,10 +67,10 @@ public class MainPunto4 {
 		String parcial = "Parcial";
 		String prog2 = "Prog2";
 		
-		listaDePalabras.InsertarOrdenado(facil);
-		listaDePalabras.InsertarOrdenado(es);
-		listaDePalabras.InsertarOrdenado(parcial);
-		listaDePalabras.InsertarOrdenado(prog2);
+		listaDePalabras.insertarOrdenado(facil);
+		listaDePalabras.insertarOrdenado(es);
+		listaDePalabras.insertarOrdenado(parcial);
+		listaDePalabras.insertarOrdenado(prog2);
 		
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
@@ -202,9 +211,9 @@ public class MainPunto4 {
 		ComparadorInverso<ElementoUniversidad> comparadorInvertidoUniversidad = new ComparadorInverso<>(comparadorUniversidad);
 		ListaVinculada<ElementoUniversidad> listaUniversidad = new ListaVinculada<ElementoUniversidad>(comparadorInvertidoUniversidad);
 		
-		listaUniversidad.InsertarOrdenado(olimpiadas);
-		listaUniversidad.InsertarOrdenado(unicen);
-		listaUniversidad.InsertarOrdenado(olimpiadas);
+		listaUniversidad.insertarOrdenado(olimpiadas);
+		listaUniversidad.insertarOrdenado(unicen);
+		listaUniversidad.insertarOrdenado(olimpiadas);
 
 		listaUniversidad.mostrarLista();
 		

@@ -1,8 +1,6 @@
 package punto1;
-
 import java.util.Comparator;
 import java.util.Iterator;
-
 public class ListaVinculada<T> implements Iterable<T>{
 	
 	private Nodo<T> cabeza;
@@ -23,7 +21,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 	//TENEMOS QUE HACER UN METODO INSERTAR NO ORDENADO! Que solo agregue un elemento al final o al principio de la lista
 
 	//insertarOrdenado siempre inserta en orden ascendente (de menor a mayor).
-	public void InsertarOrdenado(T valor) {
+	public void insertarOrdenado(T valor) {
 		Nodo<T> nuevo= new Nodo<T>(valor);
 		if(estaVacia()) {
 			cabeza = nuevo;
@@ -49,16 +47,20 @@ public class ListaVinculada<T> implements Iterable<T>{
 		size++; 
 	}
 	
-	public void Insertar(T valor) {
+	public void insertar(T valor) {
 		Nodo<T> nuevo = new Nodo<T>(valor); 
 		if(estaVacia()) {
 			this.cabeza=nuevo;
 		}
 		else {
 			Nodo<T> temp= this.cabeza;
+			Nodo<T> ant= null;
 			while(temp!=null) {
+				ant=temp;
 				temp=temp.obtenerSiguiente();
-				nuevo.enlazarSiguiente(temp);
+			}
+			if(temp==null && ant!=null) {
+				ant.enlazarSiguiente(nuevo);
 			}
 		}
 		size++;
@@ -69,7 +71,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 		Nodo<T>aux= this.cabeza;
 		this.cabeza=null;
 		while(aux!=null) {
-			this.InsertarOrdenado(aux.obtenerValor());
+			this.insertarOrdenado(aux.obtenerValor());
 			aux=aux.obtenerSiguiente();
 			size--;
 		}
@@ -151,9 +153,19 @@ public class ListaVinculada<T> implements Iterable<T>{
 		}
 	}
 		
+	//Que tiene que hacer el metodo
+	//va recorriendo
+	// pregunta if ocurrencia
+		//si encuentra ocurrencia se fija pos
+		//manda a borrar por pos
+		//creo que el size -- lo hace el borrar por pos
+		//sigue recorriendo
+	//si no encuentra ocurrenciadevuelve null
+	
+	
 	public void eliminarOcurrencias(T valor) {
 		if(estaVacia()) {
-			return ;
+			return;
 		}else {	
 			Nodo<T> aux= this.cabeza;
 			Nodo<T> ant=null;

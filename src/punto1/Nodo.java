@@ -1,10 +1,8 @@
 package punto1;
 
-
-
 public class Nodo<T>  {
-	T valor;
-	Nodo<T> siguiente;  
+	private T valor;
+	private Nodo<T> siguiente;  
 	
 	
 	public Nodo (T valor) {
