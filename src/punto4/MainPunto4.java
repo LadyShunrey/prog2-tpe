@@ -55,7 +55,6 @@ public class MainPunto4 {
 		
 		int posicionDel5 = listaDeNumeros.obtenerPosicion(5);
 		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
-
 		listaDeNumeros.eliminarSegunValor(5);
 		System.out.println(listaDeNumeros);
 
@@ -109,8 +108,12 @@ public class MainPunto4 {
 		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO F ---------");
 		System.out.println(" ");
-		int encontrarPosicionDeParcial = listaDePalabras.obtenerPosicion(parcial); 
-		System.out.println("La posición en la que está el String 'Parcial' es: " + encontrarPosicionDeParcial);
+		int encontrarPosicionDeParcial = listaDePalabras.obtenerPosicion(parcial);
+		String resultado = "La posición en la que está el String 'Parcial' es: ";
+		if(encontrarPosicionDeParcial < 0){
+			resultado = "No existe esa palabra, la posicion es: ";
+		}
+		System.out.println(resultado + encontrarPosicionDeParcial);
 		
 		//PUNTO G
 		System.out.println(" ");
@@ -119,7 +122,7 @@ public class MainPunto4 {
 		System.out.println("--------- EL PUNTO G ---------");
 		System.out.println(" ");
 		int encontrarPosicionDeRecuperatorio = listaDePalabras.obtenerPosicion("Recuperatorio"); //creo que deberia NO existir, no?
-		String resultado = "La posición en la que está el String 'Recuperatorio' es: ";
+		resultado = "La posición en la que está el String 'Recuperatorio' es: ";
 		if(encontrarPosicionDeRecuperatorio < 0){
 			resultado = "No existe esa palabra, la posicion es: ";
 		}
