@@ -2,16 +2,13 @@ package punto3;
 
 import punto1.*;
 
-import java.util.ArrayList;
-
-
 public class Grupo extends ElementoUniversidad {
 	private String nombre;
-	private ArrayList<ElementoUniversidad> elementos;
+	private ListaVinculada<ElementoUniversidad> elementos;
 	
 	public Grupo(String nombre){
 		this.nombre = nombre;
-		elementos = new ArrayList<>();
+		elementos = new ListaVinculada<>();
 	}
 
 	@Override
@@ -28,18 +25,26 @@ public class Grupo extends ElementoUniversidad {
 	}
 
 	public void addElemento(ElementoUniversidad elemento){
-		elementos.add(elemento);
+		elementos.insertar(elemento);
 	}
 
-	public void imprimirEstructura(){
-		System.out.println("Este grupo se llama: " + nombre +" y adentro tiene todos estos elementos");
-		for(ElementoUniversidad elemento: elementos){
-			elemento.imprimirEstructura();
-		}
-	}
+//	public void imprimirEstructura(){
+//		System.out.println("Este grupo se llama: " + nombre +" y adentro tiene todos estos elementos");
+//		for(ElementoUniversidad elemento: elementos){
+//			elemento.imprimirEstructura();
+//		}
+//	}
+	
+	
 	
 	@Override
 	public String toString() {
-		return "Este grupo se llama: " + nombre;
+		String resultado = "Este grupo se llama: " + nombre + "\n";
+		resultado += "Y adentro tiene todo esto: \n";
+		for(ElementoUniversidad elemento: elementos){
+			resultado += elemento.toString();
+		}
+		return resultado;
 	}
+
 }

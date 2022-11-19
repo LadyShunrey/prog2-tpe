@@ -1,11 +1,11 @@
 package punto2;
 
-import punto1.*;
+import punto1.ListaVinculada;
 import punto3.*;
 
 import java.util.ArrayList;
 
-public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
+public class Alumno extends ElementoUniversidad{
 	private String nombre;
 	private String apellido;
 	private int dni;
@@ -19,14 +19,11 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 		this.edad = edad;
 		intereses = new ArrayList<String>();
 	}
-	
-	//implementar equals
-	
+		
 	public int contarAlumnos(){
 		return 1;
 	}
 
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -47,8 +44,9 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 		intereses.add(interes);
 	}
 	
-	public void imprimirEstructura(){
-		System.out.println("Este alumno se llama: " + nombre);
+	@Override
+	public String toString() {
+		return "El alumno: " + apellido +", "+ nombre + ". Con DNI " + dni + " y edad " + edad + " y sus intereses son: "+intereses+"\n";
 	}
 
 	@Override
@@ -71,21 +69,5 @@ public class Alumno extends ElementoUniversidad implements Comparable<Alumno>{
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
-	}
-
-	@Override
-	public int compareTo(Alumno alumno) {
-		ComparadorAlumnoApellido comparadorApellido = new ComparadorAlumnoApellido();
-		ComparadorAlumnoNombre comparadorNombre = new ComparadorAlumnoNombre();
-		ComparadorDNI comparadorDNI = new ComparadorDNI();
-		int resultado;
-		resultado = comparadorApellido.compare(this, alumno);
-		if(resultado==0){
-			resultado = comparadorNombre.compare(this, alumno);
-		}
-		if(resultado==0){
-			resultado = comparadorDNI.compare(this, alumno);
-		}
-		return resultado;
 	}
 }

@@ -8,9 +8,11 @@ public class MainPunto4 {
 
 	public static void main(String[] args) {
 		//PUNTO A
+		System.out.println(" ");
 		System.out.println("------------------------------");
 		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO A ---------");
+		System.out.println(" ");
 		ComparadorInteger<Integer> comparadorDeInts = new ComparadorInteger<>();
 		
 		ListaVinculada<Integer> listaDeNumeros = new ListaVinculada<>(comparadorDeInts);
@@ -27,28 +29,34 @@ public class MainPunto4 {
 		listaDeNumeros.insertar(numero4);
 		listaDeNumeros.insertar(numero5);
 		
-		listaDeNumeros.mostrarLista();
+		System.out.println(listaDeNumeros);
 		
 		//PUNTO B
+		System.out.println(" ");
 		System.out.println("------------------------------");
 		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO B ---------");
+		System.out.println(" ");
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
 		}
 		
 		//PUNTO C
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO C ---------");
+		System.out.println(" ");
 		//eliminar por pos el primero
 		System.out.println("Borramos la primer posicion que es el 10 y queda:");
 		listaDeNumeros.eliminarSegunPosicion(0);
-		listaDeNumeros.mostrarLista();
+		System.out.println(listaDeNumeros);
 		//buscar el 5 y borrarlo
 		int posicionDel5 = listaDeNumeros.obtenerPosicion(5);
 		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
 //		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
 		listaDeNumeros.eliminarSegunValor(5);
-		listaDeNumeros.mostrarLista();
+		System.out.println(listaDeNumeros);
 		//buscar el 11 y eliminarlo
 		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
 		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
@@ -60,7 +68,11 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO D
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO D ---------");
+		System.out.println(" ");
 		
 		ComparadorString<String> comparadorString = new ComparadorString<>();
 		
@@ -81,19 +93,31 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO E
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO E ---------");
+		System.out.println(" ");
 		
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
 		}
 		
 		//PUNTO F
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO F ---------");
+		System.out.println(" ");
 		int encontrarPosicionDeParcial = listaDePalabras.obtenerPosicion(parcial); 
 		System.out.println("La posición en la que está el String 'Parcial' es: " + encontrarPosicionDeParcial);
 		
 		//PUNTO G
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO G ---------");
+		System.out.println(" ");
 		int encontrarPosicionDeRecuperatorio = listaDePalabras.obtenerPosicion("Recuperatorio"); //creo que deberia NO existir, no?
 		String resultado = "La posición en la que está el String 'Recuperatorio' es: ";
 		if(encontrarPosicionDeRecuperatorio < 0){
@@ -102,7 +126,11 @@ public class MainPunto4 {
 		System.out.println(resultado + encontrarPosicionDeRecuperatorio);
 		
 		//PUNTO H
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO H ---------");
+		System.out.println(" ");
 		
 		ComparadorInverso<String> comparadorInvertido = new ComparadorInverso<>(comparadorString);
 		
@@ -110,6 +138,7 @@ public class MainPunto4 {
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
 		}
+		System.out.println(" ");
 		System.out.println("Con el orden invertido: ");
 		
 //		listaDePalabras.(comparadorInvertido);
@@ -119,7 +148,11 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO I
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO I ---------");
+		System.out.println(" ");
 		
 		Alumno john = new Alumno("John", "Doe", 1200000 , 18);
 		john.addInteres("intercambio");
@@ -165,7 +198,7 @@ public class MainPunto4 {
 		Alumno jose = new Alumno("José", "Paso", 33322112 , 28);
 		jose.addInteres("problemas");
 		
-		Alumno isaac = new Alumno("Isaac", "Newton", 12343565 , 28);
+		Alumno isaac = new Alumno("Isaac", "Newton", 12343565 , 29);
 		isaac.addInteres("sucesiones");
 		
 		Grupo unicen = new Grupo("Unicen");
@@ -197,7 +230,7 @@ public class MainPunto4 {
 		historia.addElemento(martin);
 		historia.addElemento(roman);
 		
-		//Olimpiadas Matematicsa
+		//Olimpiadas Matematicas
 		olimpiadas.addElemento(matea2);
 		olimpiadas.addElemento(losFibo);
 		
@@ -208,22 +241,28 @@ public class MainPunto4 {
 		losFibo.addElemento(jose);
 		losFibo.addElemento(isaac);
 		
-		unicen.imprimirEstructura();
-		
-		olimpiadas.imprimirEstructura();
+//		unicen.imprimirEstructura();
+		System.out.println(unicen);
+		System.out.println(" ");
+//		olimpiadas.imprimirEstructura();
+		System.out.println(olimpiadas);
+		System.out.println(" ");
+		System.out.println("------------------------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------------------------");
+		System.out.println(" ");
 		
 		System.out.println("La universidad " + unicen.getNombre() + " tiene esta cantidad de alumnos:" + unicen.contarAlumnos());
 		System.out.println("El grupo " + olimpiadas.getNombre() + " tiene esta cantidad de alumnos:" + olimpiadas.contarAlumnos());
+		System.out.println(" ");
 		
 		ComparadorElementoUniversidad comparadorUniversidad = new ComparadorElementoUniversidad();
 		ComparadorInverso<ElementoUniversidad> comparadorInvertidoUniversidad = new ComparadorInverso<>(comparadorUniversidad);
 		ListaVinculada<ElementoUniversidad> listaUniversidad = new ListaVinculada<ElementoUniversidad>(comparadorInvertidoUniversidad);
 		
-		
-		listaUniversidad.insertarOrdenado(unicen);
 		listaUniversidad.insertarOrdenado(olimpiadas);
-
-		listaUniversidad.mostrarLista();
+		listaUniversidad.insertarOrdenado(unicen);
+		
+		System.out.println(listaUniversidad);
 		
 	}
 
