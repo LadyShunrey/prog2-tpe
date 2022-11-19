@@ -2,8 +2,6 @@ package punto3;
 
 import java.util.Iterator;
 
-import punto1.ListaVinculada;
-
 public abstract class ElementoUniversidad implements Comparable<ElementoUniversidad>{
 	public abstract int contarAlumnos();
 //	public abstract void imprimirEstructura();

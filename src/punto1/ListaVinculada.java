@@ -1,26 +1,27 @@
 package punto1;
+
 import java.util.Comparator;
 import java.util.Iterator;
+
 public class ListaVinculada<T> implements Iterable<T>{
-	
 	private Nodo<T> primerNodo;
 	private Comparator<T> orden;
 	private int size;
 	
+	//constructor con posibilidad de setear el criterio de orden
 	public ListaVinculada(Comparator<T> orden) {
 		this.primerNodo=null;
 		this.size=0;
 		this.orden=orden;
 	}
 	
+	//constructor sin posibilidad de setear el criterio de orden
 	public ListaVinculada() {
 		this.primerNodo=null;
 		this.size=0;
 	}
-	
-	//TENEMOS QUE HACER UN METODO INSERTAR NO ORDENADO! Que solo agregue un elemento al final o al principio de la lista
 
-	//insertarOrdenado siempre inserta en orden ascendente (de menor a mayor).
+	//insertarOrdenado siempre inserta con el orden elegido en el constructor y sino por defecto ascendente.
 	public void insertarOrdenado(T valor) {
 		Nodo<T> nuevo= new Nodo<T>(valor);
 		if(estaVacia()) {
@@ -28,25 +29,26 @@ public class ListaVinculada<T> implements Iterable<T>{
 		}else {
 			Nodo<T> anterior=null;
 			Nodo<T> temp=this.primerNodo;
-			while(temp!=null && orden.compare(temp.obtenerValor(), valor)<0) { //nuevo es mayor que temp avanzo
-				anterior = temp;		//al anterior le doy el papel de cabeza
-				temp=temp.obtenerSiguiente();		//avanzo
+			while(temp!=null && orden.compare(temp.obtenerValor(), valor)<0) { 
+				anterior = temp;
+				temp=temp.obtenerSiguiente();
 			}
 			
 			if(temp==null&&anterior!=null) {
-				anterior.enlazarSiguiente(nuevo);	//al anterior le enlaza el nuevo;
+				anterior.enlazarSiguiente(nuevo);	
 			}else {
-				nuevo.enlazarSiguiente(temp); // pone al nuevo antes que el temporal
+				nuevo.enlazarSiguiente(temp); 
 				if(temp==this.primerNodo) {
-					this.primerNodo=nuevo;	//si no habia anterior al nuevo lo pone como cabeza
+					this.primerNodo=nuevo;
 				}else {
-					anterior.enlazarSiguiente(nuevo);	//si habia anterior le enlaza el nuevo
+					anterior.enlazarSiguiente(nuevo);
 				}
 			}
 		}
 		size++; 
 	}
 	
+	//insertar comun que agrega al final de la lista
 	public void insertar(T valor) {
 		Nodo<T> nuevo = new Nodo<T>(valor); 
 		if(estaVacia()) {
@@ -66,6 +68,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 		size++;
 	}
 	
+	//metodo que reordena la lista segun un nuevo criterio seteado con el setOrden() ;
 	//FIXME: Este método no debería ser necesario, SALVO que se cambie el orden, en cuyo caso hay que reordenar (pero no insertando)
 	private void ordenar() {
 		Nodo<T>aux= this.primerNodo;
@@ -78,6 +81,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 		
 	}
 	
+	//Elimina un valor al pasarle su posicion
 	public void eliminarSegunPosicion(Integer index) {
 		int contador = 0;
 		if(index<size){
@@ -96,6 +100,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 		}
 	}
 	
+	//Elemina una unica ocurrencia (la primera que encuentre)
 	public void eliminarSegunValor(T numeroAeliminar) {
         if (primerNodo!= null) {
             Nodo<T> aux = primerNodo;
@@ -114,7 +119,8 @@ public class ListaVinculada<T> implements Iterable<T>{
 
     }
 
-	public Object obtenerValor(Integer index) {
+	//Devuelve un valor al pasarle una posicion
+	public T obtenerValor(Integer index) {
 		int contador =0;
 		Nodo<T> temp= primerNodo;
 		while(contador<index ) {
@@ -125,6 +131,7 @@ public class ListaVinculada<T> implements Iterable<T>{
 		return temp.obtenerValor();
 	}
 	
+	//Devuelve la posicion de la primer ocurrencia que encuentre
 	public Integer obtenerPosicion(T valor) {
 		if(estaVacia()) {
 			return -1;
@@ -142,17 +149,8 @@ public class ListaVinculada<T> implements Iterable<T>{
 			}
 		}
 	}
-		
-	//Que tiene que hacer el metodo
-	//va recorriendo
-	// pregunta if ocurrencia
-		//si encuentra ocurrencia se fija pos
-		//manda a borrar por pos
-		//creo que el size -- lo hace el borrar por pos
-		//sigue recorriendo
-	//si no encuentra ocurrenciadevuelve null
 	
-	
+	//Borra todas las ocurrencias que encuentre
 	public void eliminarOcurrencias(T valor) {
 		if(!estaVacia() && primerNodo.obtenerValor().equals(valor)) {
 			while((primerNodo != null) && (primerNodo.obtenerValor().equals(valor))) {
@@ -174,18 +172,24 @@ public class ListaVinculada<T> implements Iterable<T>{
 	}
 	
 	
-	
+	//chequea si la lista está vacia
 	public boolean estaVacia() {
 		return (this.primerNodo==null);
 	}
 	
-	public int getSize() {
-		return size;
-	}
-	
+	//cambia el orden por uno nuevo y reordena
 	public void setOrden(Comparator<T> orden) {
 		this.orden = orden;
 		ordenar();
+	}
+	
+	//retorna un nuevo iterador
+	public Iterator<T> iterator(){
+		return new IteradorNodo<T>(this.primerNodo, this.size);
+	}
+	
+	public int getSize() {
+		return size;
 	}
 	
 	 @Override
@@ -197,13 +201,8 @@ public class ListaVinculada<T> implements Iterable<T>{
 		}
 		return resultado;
 	}
-	
-	public Iterator<T> iterator(){
-		return new IteradorNodo<T>(this.primerNodo, this.size);
-	}
-	
 
-	//FIXME: Usar POS, sized de la lista y devolver pos-1 cuando pide next
+	//Clase interna que permite recorrer la lista
 	private class IteradorNodo<T> implements Iterator<T>{
 		private Nodo<T> puntero;
 		private int pos;
@@ -212,11 +211,14 @@ public class ListaVinculada<T> implements Iterable<T>{
 			this.puntero=puntero;
 			this.pos = pos;
 		}
+		
+		//pregunta si hay siguiente
 		@Override
 		public boolean hasNext() {
 			return pos>0;
 		}
 		
+		//trae el siguiente si lo hubiera
 		@Override
 		public T next() {
 			pos--;

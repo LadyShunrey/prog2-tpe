@@ -1,6 +1,5 @@
 package punto2;
 
-import punto1.ListaVinculada;
 import punto3.*;
 
 import java.util.ArrayList;
