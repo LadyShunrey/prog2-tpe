@@ -5,14 +5,13 @@ import punto2.*;
 import punto3.*;
 
 public class MainPunto4 {
+	//Agrego constantes para imprimir strings que se repiten a lo largo del main
+	public static final String LINEAS = "------------------------------------------";
 	
 	public static void main(String[] args) {
 		//PUNTO A
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO A ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("A");
+		
 		ComparadorInteger<Integer> comparadorDeInts = new ComparadorInteger<>();
 		
 		ListaVinculada<Integer> listaDeNumeros = new ListaVinculada<>(comparadorDeInts);
@@ -32,21 +31,13 @@ public class MainPunto4 {
 		System.out.println(listaDeNumeros);
 		
 		//PUNTO B
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO B ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("B");
 		for(Integer numero: listaDeNumeros){
 			System.out.println(numero);
 		}
 		
 		//PUNTO C
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO C ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("C");
 		
 		System.out.println("En este punto hay que borrar por posición y por valor");
 		System.out.println("Borramos la primer posicion que es el 10 y queda:");
@@ -67,11 +58,7 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO D
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO D ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("D");
 		
 		ComparadorString<String> comparadorString = new ComparadorString<>();
 		
@@ -92,22 +79,14 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO E
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO E ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("E");
 		
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
 		}
 		
 		//PUNTO F
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO F ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("F");
 		int encontrarPosicionDeParcial = listaDePalabras.obtenerPosicion(parcial);
 		String resultado = "La posición en la que está el String 'Parcial' es: ";
 		if(encontrarPosicionDeParcial < 0){
@@ -116,11 +95,7 @@ public class MainPunto4 {
 		System.out.println(resultado + encontrarPosicionDeParcial);
 		
 		//PUNTO G
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO G ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("G");
 		int encontrarPosicionDeRecuperatorio = listaDePalabras.obtenerPosicion("Recuperatorio"); //creo que deberia NO existir, no?
 		resultado = "La posición en la que está el String 'Recuperatorio' es: ";
 		if(encontrarPosicionDeRecuperatorio < 0){
@@ -129,11 +104,7 @@ public class MainPunto4 {
 		System.out.println(resultado + encontrarPosicionDeRecuperatorio);
 		
 		//PUNTO H
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO H ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("H");
 		
 		ComparadorInverso<String> comparadorInvertido = new ComparadorInverso<>(comparadorString);
 		
@@ -150,11 +121,7 @@ public class MainPunto4 {
 		}
 		
 		//PUNTO I
-		System.out.println(" ");
-		System.out.println("------------------------------");
-		System.out.println("------------------------------");
-		System.out.println("--------- EL PUNTO I ---------");
-		System.out.println(" ");
+		imprimirEncabezadoPunto("I");
 		
 		Alumno john = new Alumno("John", "Doe", 1200000 , 18);
 		john.addInteres("intercambio");
@@ -248,8 +215,8 @@ public class MainPunto4 {
 		System.out.println(olimpiadas);
 		System.out.println(" ");
 		
-		System.out.println("------------------------------------------------------------------------------------------");
-		System.out.println("------------------------------------------------------------------------------------------");
+		System.out.println(LINEAS + LINEAS + LINEAS);
+		System.out.println(LINEAS + LINEAS + LINEAS);
 		System.out.println(" ");
 		
 		System.out.println("La universidad " + unicen.getNombre() + " tiene esta cantidad de alumnos:" + unicen.contarAlumnos());
@@ -267,4 +234,14 @@ public class MainPunto4 {
 		
 	}
 
+	//método interno para imprimir los nombres de los puntos
+	private static void imprimirEncabezadoPunto(String punto) {
+	 
+		System.out.println(" ");
+		System.out.println(LINEAS);
+		System.out.println(LINEAS);
+		System.out.println("--------------- EL PUNTO "+punto+" ---------------");
+		System.out.println(" ");
+		
+	}
 }
