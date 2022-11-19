@@ -5,7 +5,7 @@ import punto2.*;
 import punto3.*;
 
 public class MainPunto4 {
-
+	
 	public static void main(String[] args) {
 		//PUNTO A
 		System.out.println(" ");
@@ -144,7 +144,6 @@ public class MainPunto4 {
 		System.out.println(" ");
 		System.out.println("Con el orden invertido: ");
 		
-//		listaDePalabras.(comparadorInvertido);
 		listaDePalabras.setOrden(comparadorInvertido);
 		for(String palabra: listaDePalabras){
 			System.out.println(palabra);
@@ -244,12 +243,11 @@ public class MainPunto4 {
 		losFibo.addElemento(jose);
 		losFibo.addElemento(isaac);
 		
-//		unicen.imprimirEstructura();
 		System.out.println(unicen);
 		System.out.println(" ");
-//		olimpiadas.imprimirEstructura();
 		System.out.println(olimpiadas);
 		System.out.println(" ");
+		
 		System.out.println("------------------------------------------------------------------------------------------");
 		System.out.println("------------------------------------------------------------------------------------------");
 		System.out.println(" ");
