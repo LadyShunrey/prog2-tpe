@@ -7,7 +7,7 @@ import punto1.*;
  *
  * Creamos una lista de alumnos para que se muestre ordenada según los criterios pedidos en el punto dos:
  * que se ordenen primero por apellido, si este se repitiera que se ordenen por nombre, y si el mismo también
- * se repitiese se ordene por DNI.
+ * se repitiese se ordene por DNI. Si dicho criterio quisiese cambiarse o agregar nuevos a futuro, se podría hacer sin problemas.
  *  
  */
 
