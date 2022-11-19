@@ -47,20 +47,20 @@ public class MainPunto4 {
 		System.out.println("------------------------------");
 		System.out.println("--------- EL PUNTO C ---------");
 		System.out.println(" ");
-		//eliminar por pos el primero
+		
+		System.out.println("En este punto hay que borrar por posición y por valor");
 		System.out.println("Borramos la primer posicion que es el 10 y queda:");
 		listaDeNumeros.eliminarSegunPosicion(0);
 		System.out.println(listaDeNumeros);
-		//buscar el 5 y borrarlo
+		
 		int posicionDel5 = listaDeNumeros.obtenerPosicion(5);
 		System.out.println("Hay que borrar el 5 que está en la posicion " + posicionDel5 + " y ahora nos queda:");
-//		listaDeNumeros.eliminarSegunPosicion(posicionDel5);
+
 		listaDeNumeros.eliminarSegunValor(5);
 		System.out.println(listaDeNumeros);
-		//buscar el 11 y eliminarlo
+
 		int posicionDel11 = listaDeNumeros.obtenerPosicion(11);
 		System.out.println("Ahora hay que borrar el 11 que está en la posicion " + posicionDel11 + " y ahora nos queda:");
-//		listaDeNumeros.eliminarSegunPosicion(posicionDel11);
 		listaDeNumeros.eliminarSegunValor(11);
 
 		for(Integer numero: listaDeNumeros){
